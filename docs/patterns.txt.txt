@@ -1,0 +1,39 @@
+PATTERN: TOGGLE
+
+[toggle label=... block=...]
+[block=hidden id=...]
+
+---
+
+PATTERN: GROUP TOGGLE
+
+[toggle group=... block=...]
+[block group=... id=...]
+
+---
+
+PATTERN: FLOAT 2 COL
+
+[block=floatcontainer]
+  [block=floatleft width=50%]
+  [block=floatright width=50%]
+[/block]
+
+---
+
+PATTERN: PANEL
+
+[block=panel]
+  [block=panelheader]
+  [block=pad10]
+[/block]
+
+---
+
+PATTERN: TABLE
+
+[table]
+  [tr]
+    [td]
+  [/tr]
+[/table]

@@ -1,0 +1,67 @@
+{
+  "scopeName": "text.fumbbl",
+  "patterns": [{ "include": "#tag" }, { "include": "#line-continuation" }],
+  "repository": {
+    "tag": {
+      "name": "meta.tag.fumbbl",
+      "begin": "\\[",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.tag.begin.fumbbl" }
+      },
+      "end": "\\]",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.tag.end.fumbbl" }
+      },
+      "patterns": [
+        { "include": "#closing-slash" },
+        { "include": "#closing-tag-name" },
+        { "include": "#opening-tag-name" },
+        { "include": "#implicit-value" },
+        { "include": "#attribute" },
+        { "include": "#bare-block-token" }
+      ]
+    },
+
+    "closing-slash": {
+      "match": "(?<=\\[)/",
+      "name": "punctuation.definition.tag.begin.fumbbl"
+    },
+
+    "closing-tag-name": {
+      "match": "(?<=\\[/)(?:b|i|u|s|color|size|font|img|url|picon|ulist|list|li|block|toggle|table|tr|td|th)\\b",
+      "name": "entity.name.tag.fumbbl"
+    },
+
+    "opening-tag-name": {
+      "match": "(?<=\\[)(?:b|i|u|s|color|size|font|img|url|picon|ulist|list|li|block|toggle|table|tr|td|th)\\b",
+      "name": "entity.name.tag.fumbbl"
+    },
+
+    "implicit-value": {
+      "match": "(?<=\\[(?:block|table|list|size|color|font|url|img))(=)(.*?)(?=\\s+[A-Za-z_][A-Za-z0-9_-]*=|\\s+(?:panel|panelheader|hidden|blackborder|white|pad5|pad10|center|right|automargin|floatcontainer|floatleft|floatright|tooltip|border2|blue|black|yellowbg|whitebg)\\b|\\])",
+      "captures": {
+        "1": { "name": "keyword.operator.assignment.fumbbl" },
+        "2": { "name": "string.unquoted.variant.fumbbl" }
+      }
+    },
+
+    "attribute": {
+      "match": "\\b([A-Za-z_][A-Za-z0-9_-]*)(=)(.*?)(?=\\s+[A-Za-z_][A-Za-z0-9_-]*=|\\s+(?:panel|panelheader|hidden|blackborder|white|pad5|pad10|center|right|automargin|floatcontainer|floatleft|floatright|tooltip|border2|blue|black|yellowbg|whitebg)\\b|\\])",
+      "captures": {
+        "1": { "name": "entity.other.attribute-name.fumbbl" },
+        "2": { "name": "keyword.operator.assignment.fumbbl" },
+        "3": { "name": "string.unquoted.attribute-value.fumbbl" }
+      }
+    },
+
+    "bare-block-token": {
+      "match": "\\b(?:panel|panelheader|hidden|blackborder|white|pad5|pad10|center|right|automargin|floatcontainer|floatleft|floatright|tooltip|border2|blue|black|yellowbg|whitebg)\\b",
+      "name": "keyword.other.block-token.fumbbl"
+    },
+
+    "line-continuation": {
+      "match": "\\\\$",
+      "name": "constant.character.escape.line-continuation.fumbbl"
+    }
+  }
+}

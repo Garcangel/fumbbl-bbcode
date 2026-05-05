@@ -1,0 +1,38 @@
+{
+  "name": "fumbbl-bbcode",
+  "displayName": "fumbbl-bbcode",
+  "description": "VS Code support for FUMBBL BBCode (syntax highlighting, folding, snippets)",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.118.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "fumbbl",
+        "aliases": [
+          "FUMBBL BBCode",
+          "fumbbl"
+        ],
+        "extensions": [
+          ".bbcode"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "fumbbl",
+        "scopeName": "text.fumbbl",
+        "path": "./syntaxes/fumbbl.tmLanguage.json"
+      }
+    ]
+  },
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:fumbbl"
+  ]
+}
