@@ -14,6 +14,10 @@ Current editor support includes:
 - folding for paired `block` and `table` sections
 - autocomplete for opening tags, closing tags, and common `tag=value` patterns
 
+## Example in VS Code:
+
+![FUMBBL BBCode syntax highlighting and autocomplete](docs/images/bbcode-screenshot.png)
+
 ## Language Reference
 
 See `docs/` for the FUMBBL BBCode reference used by this project.
