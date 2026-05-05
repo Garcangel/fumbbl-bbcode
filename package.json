@@ -2,7 +2,7 @@
   "name": "fumbbl-bbcode",
   "displayName": "fumbbl-bbcode",
   "description": "Syntax highlighting, folding, and autocomplete for FUMBBL BBCode in VS Code",
-  "publisher": "garcangel",
+  "publisher": "Garcangel",
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
