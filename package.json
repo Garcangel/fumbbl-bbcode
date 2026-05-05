@@ -33,11 +33,14 @@
     ]
   },
   "main": "./src/extension.js",
-  "activationEvents": [
-    "onLanguage:fumbbl"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Garcangel/fumbbl-bbcode.git"
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2"
   }
 }

@@ -34,17 +34,21 @@ Some example `.bbcode` content in `tests/` was derived from
 [FUMBBLPlus/BBCODE-examples](https://github.com/FUMBBLPlus/BBCODE-examples),
 an archived repository released under the MIT License.
 
+Use this as plain text and format it yourself in the file:
+
 ## Local Testing
 
 To run the extension in a development host, open the repo in VS Code and press `F5`.
 
 ## Packaging
 
-To create a local installable package, run:
+Install dependencies:
 
-```powershell
-vsce package
-```
+`npm install`
+
+Create a local installable package:
+
+`npm run package`
 
 This generates a `.vsix` file in the project root.
 
