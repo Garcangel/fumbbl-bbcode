@@ -1,7 +1,8 @@
 {
   "name": "fumbbl-bbcode",
   "displayName": "fumbbl-bbcode",
-  "description": "VS Code support for FUMBBL BBCode (syntax highlighting, folding, snippets)",
+  "description": "VS Code support for FUMBBL BBCode (syntax highlighting, folding)",
+  "publisher": "garcangel",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.118.0"
@@ -34,5 +35,9 @@
   "main": "./src/extension.js",
   "activationEvents": [
     "onLanguage:fumbbl"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Garcangel/fumbbl-bbcode.git"
+  }
 }
