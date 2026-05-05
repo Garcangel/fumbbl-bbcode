@@ -4,6 +4,7 @@
   "description": "VS Code support for FUMBBL BBCode (syntax highlighting, folding)",
   "publisher": "garcangel",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.118.0"
   },
