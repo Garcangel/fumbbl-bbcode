@@ -30,6 +30,42 @@ function createClosingTagCompletionItem(tag, range) {
   return item;
 }
 
+function createImplicitValueCompletionItem(tag, value, range) {
+  const item = new vscode.CompletionItem(
+    value,
+    vscode.CompletionItemKind.Value,
+  );
+
+  if (languageData.pairedTags.includes(tag)) {
+    item.insertText = new vscode.SnippetString(`${value}]$0[/${tag}]`);
+  } else {
+    item.insertText = new vscode.SnippetString(`${value}]$0`);
+  }
+
+  item.range = range;
+  item.detail = `FUMBBL BBCode ${tag} pattern`;
+  return item;
+}
+
+function createFreeformImplicitValueCompletionItem(tag, value, range) {
+  const item = new vscode.CompletionItem(
+    `${value}] [/${tag}]`,
+    vscode.CompletionItemKind.Snippet,
+  );
+
+  if (languageData.pairedTags.includes(tag)) {
+    item.insertText = new vscode.SnippetString(`${value}]$0[/${tag}]`);
+  } else {
+    item.insertText = new vscode.SnippetString(`${value}]$0`);
+  }
+
+  item.range = range;
+  item.detail = `Complete ${tag}=... tag`;
+  item.filterText = value;
+  item.sortText = '0';
+  return item;
+}
+
 function createCompletionProvider() {
   return {
     provideCompletionItems(document, position) {
@@ -50,6 +86,40 @@ function createCompletionProvider() {
         return languageData.pairedTags
           .filter((tag) => tag.startsWith(typedPrefix))
           .map((tag) => createClosingTagCompletionItem(tag, range));
+      }
+
+      const implicitValueMatch = linePrefix.match(/\[([a-z]+)=([^\]]*)$/i);
+      if (implicitValueMatch) {
+        const tag = implicitValueMatch[1].toLowerCase();
+        const typedValue = implicitValueMatch[2];
+        const normalizedValue = typedValue.toLowerCase();
+        const range = new vscode.Range(
+          position.line,
+          position.character - typedValue.length,
+          position.line,
+          position.character + (hasClosingBracket ? 1 : 0),
+        );
+
+        const items = [];
+        const values = languageData.implicitValueTags[tag];
+
+        if (values) {
+          items.push(
+            ...values
+              .filter((value) => value.startsWith(normalizedValue))
+              .map((value) =>
+                createImplicitValueCompletionItem(tag, value, range),
+              ),
+          );
+        }
+
+        if (languageData.freeformImplicitValueTags.includes(tag)) {
+          items.push(
+            createFreeformImplicitValueCompletionItem(tag, typedValue, range),
+          );
+        }
+
+        return items.length > 0 ? items : undefined;
       }
 
       const openingMatch = linePrefix.match(/\[([a-z]*)$/i);

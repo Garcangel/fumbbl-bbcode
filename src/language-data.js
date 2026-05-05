@@ -60,7 +60,10 @@ module.exports = {
       'tooltip',
     ],
     table: ['automargin'],
+    size: ['8', '10', '12', '14', '16', '18'],
   },
+
+  freeformImplicitValueTags: ['size', 'color', 'font', 'url', 'img'],
 
   bareBlockTokens: [
     'panel',
