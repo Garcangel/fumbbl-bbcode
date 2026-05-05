@@ -1,31 +1,22 @@
 # Next Ideas
 
-## Autocomplete
+## Current
 
-Highest-value next feature.
+Implemented:
 
-Goals:
+- syntax highlighting
+- folding for paired `block` and `table` sections
+- autocomplete for opening tags, closing tags, and implicit-value patterns
+- free-form completion for tags like `size=...`
 
-- autocomplete tag names after `[`
-- insert paired tags automatically
-- suggest closing tags after `[/`
-- suggest common attributes/tokens by tag context
-- support documented implicit-value patterns like `block=center`
+## Next
 
-Plain tag examples:
+Possible improvements:
 
-- `[bl` -> `[block][/block]`
-- `[ta` -> `[table][/table]`
-- `[tr` -> `[tr][/tr]`
-- `[td` -> `[td][/td]`
-
-Pattern examples:
-
-- `block=center` -> `[block=center][/block]`
-- `block=hidden` -> `[block=hidden][/block]`
-- `block=panel` -> `[block=panel][/block]`
-- `block=floatcontainer` -> `[block=floatcontainer][/block]`
-- `table=automargin` -> `[table=automargin][/table]`
+- suggest attributes and block tokens by tag context
+- add snippets for common documented patterns
+- improve autocomplete for patterns like `block=center` and `table=automargin`
+- consider indentation / formatting if real usage shows it is needed
 
 Context examples:
 
@@ -35,6 +26,4 @@ Context examples:
 
 ## Later
 
-- snippets
-- indentation / formatting
 - preview if FUMBBL exposes a render endpoint
